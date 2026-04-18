@@ -1,0 +1,16 @@
+{
+  "name": "microfrontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "cd vue-remote && npm install && cd ../angular-shell && npm install",
+    "prebuild:vue": "cd vue-remote && npm run build",
+    "start:vue": "cd vue-remote && npm run preview",
+    "start:angular": "cd angular-shell && npm run dev",
+    "start": "npm run install:all && npm run prebuild:vue && concurrently --kill-others --names vue,angular --prefix-colors green,red \"npm run start:vue\" \"npm run start:angular\"",
+    "build": "cd vue-remote && npm run build && cd ../angular-shell && npm run build"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

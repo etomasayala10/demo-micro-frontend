@@ -1,0 +1,12 @@
+services:
+  vue-remote:
+    build: ./vue-remote
+    ports:
+      - "3000:80"
+
+  angular-shell:
+    build: ./angular-shell
+    ports:
+      - "4200:80"
+    depends_on:
+      - vue-remote

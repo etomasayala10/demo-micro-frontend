@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "moduleResolution": "bundler",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": false,
+    "strict": false,
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "baseUrl": ".",
+    "paths": {},
+    "skipLibCheck": true
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "full"
+  },
+  "include": ["src/**/*.ts"]
+}

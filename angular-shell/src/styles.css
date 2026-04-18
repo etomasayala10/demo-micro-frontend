@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+  html, body {
+    height: 100%;
+  }
+}
+
+@layer components {
+  .badge-angular {
+    @apply inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wider uppercase bg-red-600 text-white mb-3;
+  }
+}
