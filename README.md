@@ -89,7 +89,11 @@ Esto ejecuta automaticamente:
 2. Build + preview del Vue Remote en el puerto **3000**
 3. Webpack dev server del Angular Shell en el puerto **4200**
 
-Navega a **http://localhost:4200**
+Navega a **http://localhost:4200/login**
+
+**Credenciales demo:** `admin@mfe.com` / `admin123`
+
+> **Nota:** Siempre accede a traves del puerto del Angular Shell (por defecto `4200`). El Vue Remote (`3000`) solo sirve los modulos remotos y no debe abrirse directamente.
 
 ### Comandos disponibles
 

@@ -2,6 +2,7 @@ import { Component, OnInit, inject, ViewEncapsulation } from '@angular/core'
 import { Router, RouterOutlet, NavigationEnd } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { SharedStateService } from '../shared/shared-state.service'
+import { MfeLoaderService } from '../shared/mfe-loader.service'
 import { filter } from 'rxjs/operators'
 
 interface NavItem {
@@ -87,13 +88,20 @@ interface NavItem {
         </nav>
 
         <!-- Footer -->
-        <div class="p-3 border-t border-white/[0.07]">
+        <div class="p-3 border-t border-white/[0.07] flex flex-col gap-1">
+          <a href="https://www.linkedin.com/in/etomas-ti" target="_blank" rel="noopener noreferrer"
+            [class]="sidebarCollapsed
+              ? 'flex items-center justify-center px-3 py-[0.65rem] w-full border-none bg-[#0a66c2]/10 text-[#60a5fa] cursor-pointer rounded-[9px] text-sm no-underline transition-all duration-150 hover:bg-[#0a66c2]/20'
+              : 'flex items-center gap-3 px-3 py-[0.65rem] w-full border-none bg-[#0a66c2]/10 text-[#60a5fa] cursor-pointer rounded-[9px] text-sm no-underline transition-all duration-150 hover:bg-[#0a66c2]/20'">
+            <svg class="w-4 h-4 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            <span *ngIf="!sidebarCollapsed" class="text-xs font-semibold">Edson Tomas</span>
+          </a>
           <button
             class="flex items-center gap-3 px-3 py-[0.65rem] w-full border-none bg-transparent text-slate-500 cursor-pointer rounded-[9px] text-sm font-['inherit'] transition-all duration-150 hover:bg-red-500/10 hover:text-red-400"
             (click)="logout()"
           >
             <span>🚪</span>
-            <span *ngIf="!sidebarCollapsed">Cerrar sesión</span>
+            <span *ngIf="!sidebarCollapsed">Cerrar sesion</span>
           </button>
         </div>
       </aside>
@@ -225,6 +233,7 @@ export class ShellComponent implements OnInit {
 
   private router = inject(Router)
   private sharedState = inject(SharedStateService)
+  private loader = inject(MfeLoaderService)
 
   ngOnInit() {
     this.sharedState.init()
@@ -259,6 +268,8 @@ export class ShellComponent implements OnInit {
   logout() {
     localStorage.removeItem('mfe_auth')
     localStorage.removeItem('mfe_user')
+    this.sharedState.setState({ user: null })
+    this.loader.invalidate('vue')
     this.router.navigate(['/login'])
   }
 }

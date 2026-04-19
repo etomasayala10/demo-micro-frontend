@@ -7,7 +7,8 @@
     "prebuild:vue": "cd vue-remote && npm run build",
     "start:vue": "cd vue-remote && npm run preview",
     "start:angular": "cd angular-shell && npm run dev",
-    "start": "npm run install:all && npm run prebuild:vue && concurrently --kill-others --names vue,angular --prefix-colors green,red \"npm run start:vue\" \"npm run start:angular\"",
+    "info": "echo \"\n========================================\n  Abre → http://localhost:4200/login\n  Credenciales: admin@mfe.com / admin123\n\n  Si cambiaste el puerto en webpack.config.js\n  usa: http://localhost:<tu-puerto>/login\n========================================\n\"",
+    "start": "npm run install:all && npm run prebuild:vue && npm run info && concurrently --kill-others --names vue,angular --prefix-colors green,red \"npm run start:vue\" \"npm run start:angular\"",
     "build": "cd vue-remote && npm run build && cd ../angular-shell && npm run build"
   },
   "devDependencies": {

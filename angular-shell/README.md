@@ -55,7 +55,11 @@ npm run dev
 npm run build
 ```
 
-> **Importante:** El Vue Remote debe estar corriendo en el puerto 3000 antes de navegar a las rutas `/products` o `/settings`.
+Una vez iniciado, abrir **http://localhost:4200/login** en el navegador.
+
+**Credenciales demo:** `admin@mfe.com` / `admin123`
+
+> **Importante:** El Vue Remote debe estar corriendo en el puerto 3000 antes de navegar a las rutas `/products` o `/settings`. Siempre accede a la aplicacion a traves del puerto del Angular Shell (por defecto `4200`), no del Vue Remote directamente.
 
 ## Docker
 

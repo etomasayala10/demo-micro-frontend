@@ -78,6 +78,12 @@ export class VueWrapperComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.vueApp) { this.vueApp.unmount(); this.vueApp = null }
+    if (this.vueApp) {
+      try { this.vueApp.unmount() } catch {}
+      this.vueApp = null
+    }
+    if (this.mountPoint?.nativeElement) {
+      this.mountPoint.nativeElement.innerHTML = ''
+    }
   }
 }
